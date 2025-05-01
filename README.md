@@ -6,7 +6,7 @@ Dataset Can be found in address https://www.kaggle.com/datasets/salmansajid05/or
 ![Example Image](ps0.png)
 
 
-![Example Image](arch.jpg)
+![Example Image](Arch.png)
 
 ### Evaluation Summary  
 
