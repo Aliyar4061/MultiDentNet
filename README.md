@@ -2,6 +2,9 @@ Early and accurate diagnosis of multiple dental conditions remains a critical un
 By integrating advanced attention mechanisms, class‐aware loss functions, and rigorous interpretability tools, this work delivers a novel, scalable, and clinically applicable AI solution for comprehensive dental diagnostics, setting the stage for real‐world decision support systems and future extensions to broader oral health conditions.
 
 Dataset Can be found in address https://www.kaggle.com/datasets/salmansajid05/oral-diseases
+
+![Example Image](ps0.png)
+
 ### Evaluation Summary  
 
 | Metric          | Value   |
