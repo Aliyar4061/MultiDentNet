@@ -32,5 +32,10 @@ The data can be downloaded from this Kaggle address: https://www.kaggle.com/data
 
 
 ![Example Image](dental3.png)
+![Example Image](Confusion Matrix.png)
+![Example Image](LC.png)
+![Example Image](Precision-Recall.png)
+![Example Image](ROC Curve.png)
+![Example Image](tsne.png)
 
 
