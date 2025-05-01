@@ -23,6 +23,3 @@ By integrating advanced attention mechanisms, class‐aware loss functions, and 
 | Hypodontia            | 0.97      | 0.91   | 0.94     | 35      |
 | Tooth Discoloration   | 1.00      | 0.99   | 0.99     | 184     |
 | Ulcers                | 1.00      | 1.00   | 1.00     | 255     |
-| **Accuracy**          |           |        | 0.99     | 947     |
-| **Macro Avg**         | 0.99      | 0.98   | 0.98     | 947     |
-| **Weighted Avg**      | 0.99      | 0.99   | 0.99     | 947     |
