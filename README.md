@@ -25,6 +25,6 @@ By integrating advanced attention mechanisms, class‐aware loss functions, and 
 | Ulcers                | 1.00      | 1.00   | 1.00     | 255     |
 
 
-![Example Image](MNISTNOISY.png)
+![Example Image](dental3.png)
 
-Figure 1: MNIST and noisy MNIST.
+
