@@ -32,6 +32,7 @@ The data can be downloaded from this Kaggle address: https://www.kaggle.com/data
 
 
 ![Example Image](dental3.png)
+![Example Image](Misclassified.png)
 ![Example Image](Confusion.png)
 ![Example Image](LC.png)
 ![Example Image](Precision-Recall.png)
