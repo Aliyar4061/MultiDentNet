@@ -33,6 +33,7 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 
 
 ![Example Image](dental3.png)
+![Example Image](output11.png)
 
 ![Example Image](Misclassified.png)
 ![Example Image](Confusion.png)
