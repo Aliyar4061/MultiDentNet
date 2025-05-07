@@ -4,6 +4,7 @@ By integrating advanced attention mechanisms, class‐aware loss functions, and 
 The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/datasets/salmansajid05/oral-diseases, https://www.kaggle.com/datasets/zaidpy/new-oral-cancer/data
 
 ![Example Image](ps0.png)
+![Example Image](ps1.png)
 
 
 ![Example Image](Arch.png)
@@ -32,6 +33,7 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 
 
 ![Example Image](dental3.png)
+
 ![Example Image](Misclassified.png)
 ![Example Image](Confusion.png)
 ![Example Image](LC.png)
