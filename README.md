@@ -39,6 +39,7 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 
 ![Example Image](Misclassified.png)
 ![Example Image](Confusion.png)
+![Example Image](Confusion1.png)
 
 
 ![Example Image](LC.png)
@@ -49,6 +50,7 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 ![Example Image](Precision-Recall1.png)
 
 ![Example Image](ROC.png)
+![Example Image](ROC22.png)
 ![Example Image](tsne.png)
 ![Example Image](tsne1.png)
 
