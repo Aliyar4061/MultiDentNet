@@ -8,6 +8,17 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 ![Example Image](ps1.png)
 
 
+## Summary of dental condition dataset
+
+| **Category**          | **Description** |
+|-----------------------|----------------|
+| Caries               | Images showing tooth decay, cavities, or carious lesions. |
+| Gingivitis           | Images displaying inflamed or infected gums. |
+| Tooth discoloration  | Images showcasing tooth discoloration or staining. |
+| Ulcers               | Images exhibiting oral ulcers or canker sores. |
+| Hypodontia           | Images representing the condition of missing one or more teeth. |
+
+
 ![Example Image](Arch.png)
 
 ### Evaluation Summary  of dental conditions
