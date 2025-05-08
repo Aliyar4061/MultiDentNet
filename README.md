@@ -1,11 +1,56 @@
 # MultiDentNet: A Unified Deep Learning Framework for Automated Diagnosis of Multiple Dental Conditions and Oral Cancer
 
+## Overview
+
 Early and accurate diagnosis of multiple dental conditions and oral cancer remains a critical unmet need in clinical practice, where traditional visual and radiographic examinations are subjective and siloed by disease type. This study introduces MultiDentNet, a unified deep learning framework designed to automatically classify five common dental conditions caries, gingivitis, tooth discoloration, ulcers, and Hypodontia as well as oral cancer from intraoral images. To the best of our knowledge, this is the first comprehensive study to classify all five dental conditions simultaneously alongside oral cancer on these datasets; previous efforts have addressed at most one or two classes. To address the gap in multi-condition diagnostic tools, we augment a DenseNet-121 backbone with hierarchical self-attention modules that capture both local lesion details and global context. Evaluated on a curated dataset of 6,791 training, 1,701 validation, and 947 test images for dental conditions, and an additional dataset of 940 images for oral cancer (490 cancer and 450 non-cancer), MultiDentNet achieves 99.37\% overall accuracy, 99.37\% precision, 99.37\% recall, an F1-Score of 0.98, AUC of 1.00, and a log loss of 0.023 for dental conditions. For oral cancer, the model achieves 94.68\% accuracy, 97.62\% precision, 91.11\% recall, and an F1-Score of 0.94. The model delivers notably high accuracy for underrepresented categories, reaching an F1-score of 0.94 for Hypodontia and 0.95 for oral cancer, even without any fine-tuning. Interpretability analyses, including t-SNE feature clustering, one-vs-rest ROC and precision-recall curves, and confusion matrix visualizations, demonstrate distinct class separation and minimal misclassification, highlighting both robustness and clinical relevance. By integrating advanced attention mechanisms, class-aware loss functions, and rigorous interpretability tools, this work delivers a novel, scalable, and clinically applicable AI solution for comprehensive dental and oral cancer diagnostics, setting the stage for real-world decision support systems and future extensions to broader oral health conditions.
+
+
+
+
+## Features
+
+- **Comprehensive Classification:** Simultaneously detects five dental conditions and oral cancer in a unified model.
+- **High Performance:** Achieves 99.37% accuracy on dental conditions and 94.68% on oral cancer datasets.
+- **Interpretability:** Includes t-SNE visualizations, ROC/PR curves, and confusion matrices for transparent decision-making.
+- **Robust Training:** Incorporates Focal Loss, mixed-precision training, and domain-specific augmentations for handling imbalanced data.
+
+## Dataset
+
+- **Dental Condition Dataset:** Contains 9,439 annotated intraoral images, split into 6,791 training, 1,701 validation, and 947 test samples. Available at [Kaggle](https://www.kaggle.com/datasets/salmansajid05/oral-diseases).
+- **Oral Cancer Dataset:** Comprises 940 images (490 cancer, 450 non-cancer), split into 752 training, 94 validation, and 94 test samples. Available at [Kaggle](https://www.kaggle.com/datasets/shivan17299/oral-cancer-lips-and-tongue-images).
+- **Augmentation:** Utilizes CLAHE, elastic deformations, and rotations to enhance diversity and generalization.
+
+## Installation
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/yourusername/MultiDentNet.git
+   cd MultiDentNet
+
+
+
+torch==2.1.0
+
+ torchvision==0.16.0  # Compatible with torch 2.1.0
+ 
+ albumentations==1.3.1
+ 
+ numpy==1.24.4
+ 
+ matplotlib==3.7.4
+ 
+ seaborn==0.13.0
+ 
+ scikit-learn==1.3.2
+ 
+ pillow==10.1.0
 
 The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/datasets/salmansajid05/oral-diseases, https://www.kaggle.com/datasets/zaidpy/new-oral-cancer/data.
 
 ![Example Image](ps0.png)
 ![Example Image](ps1.png)
+
+
 
 
 ## Summary of dental condition dataset
