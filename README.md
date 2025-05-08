@@ -86,4 +86,50 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 ![Example Image](tsne.png)
 ![Example Image](tsne1.png)
 
+# Conclusions
 
+In this work, we have presented MultiDentNet, a novel self-attention-enhanced DenseNet architecture designed for the simultaneous classification of five common dental conditions (caries, gingivitis, tooth discoloration, ulcers, and Hypodontia) as well as oral cancer from intraoral images. Our key findings include:
+
+## Key Findings
+
+- **High diagnostic performance:** On a held-out test set of 947 images for dental conditions, our model achieved 99.37% overall accuracy, 99.37% precision and recall, a macro-F1 score of 0.98, and a macro-AUC of 1.00. For oral cancer, the model achieved 94.68% accuracy, 97.62% precision, 91.11% recall, and an F1-score of 0.94 on a dataset of 131 images. These results demonstrate robust classification even for underrepresented classes, such as Hypodontia (F1 = 0.94) and oral cancer (F1 = 0.95 for Cancer class).
+
+- **Effective imbalance handling:** By integrating Focal Loss and a domain-specific augmentation pipeline (including CLAHE, elastic deformations, and anisotropic rotations), we substantially mitigated the effects of severe class skew, ensuring strong performance across all conditions.
+
+- **Enhanced interpretability:** Qualitative analyses such as t-SNE feature clustering, one-vs-rest ROC/PR curves, and confusion-matrix visualizations confirmed clear class separability and provided valuable insights into residual error modes, fostering transparency and clinician trust.
+
+These results directly address our original objective of developing a unified, scalable diagnostic tool for comprehensive oral health assessment. By combining hierarchical self-attention with DenseNet's feature reuse, our framework effectively captures both fine-grained lesion details and global contextual cues, addressing limitations in prior studies that focused on single or dual conditions.
+
+## Implications
+
+Our approach offers several practical benefits for clinical practice:
+
+- *Clinical decision support:* The high accuracy, confidence, and interpretability of MultiDentNet make it a promising candidate for real-time augmentation of dentist evaluations, potentially reducing diagnostic errors and enhancing patient outcomes.
+
+- *Workflow efficiency:* An end-to-end system that concurrently screens for multiple dental conditions and oral cancer can streamline clinical workflows, reduce patient chair time, and minimize variability across clinicians.
+
+- *Foundation for multimodal extension:* The self-attention modules and training strategies we propose can be readily adapted to incorporate additional imaging modalities, such as radiographs or 3D scans, further enhancing diagnostic capabilities.
+
+## Limitations
+
+While MultiDentNet demonstrates exceptional performance on the current datasets, several limitations warrant consideration:
+
+- **Dataset diversity:** The dental condition images were sourced from a limited number of clinical centers, and the oral cancer dataset is relatively small (131 images). External validation on more diverse populations, imaging devices, and larger datasets is needed to confirm generalizability.
+
+- **Two-dimensional images:** Intraoral photographs may not capture sub-surface pathology visible in radiographs. Future work should explore multimodal fusion to integrate radiographic data for a more comprehensive diagnostic tool.
+
+- **Threshold optimization:** Although AUC values indicate excellent ranking capability, optimal decision thresholds for each class remain to be calibrated for specific clinical settings to maximize clinical utility.
+
+## Future Work
+
+Building on these findings, we plan to:
+
+- Validate MultiDentNet on multi-institutional and mobile-device-captured image datasets to assess its robustness in tele-dentistry contexts and ensure applicability across diverse populations.
+
+- Integrate radiographic inputs (e.g., bitewing X-rays, CBCT) via a multimodal architecture to improve the detection of sub-surface lesions and enhance diagnostic accuracy.
+
+- Investigate active-learning strategies to reduce annotation burden and continually adapt the model to evolving clinical practices, ensuring long-term relevance and performance.
+
+## Summary
+
+MultiDentNet provides a comprehensive, interpretable, and high-performance solution for multi-condition dental and oral cancer diagnostics. By addressing the limitations of prior research and offering a scalable framework for clinical deployment, we believe this work will catalyze further advancements in AI-driven oral healthcare and accelerate the adoption of intelligent diagnostic tools in everyday practice.
