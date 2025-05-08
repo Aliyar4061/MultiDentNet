@@ -10,7 +10,7 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 
 ![Example Image](Arch.png)
 
-### Evaluation Summary  
+### Evaluation Summary  of dental conditions
 
 | Metric          | Value   |
 |-----------------|---------|
@@ -22,7 +22,29 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 | MCC             | 0.9917  |
 | Log Loss        | 0.0230  |
 
-### Classification Report
+
+
+## Evaluation summary of oral cancer
+
+| Metric          | Value   |
+|-----------------|---------|
+| Accuracy        | 0.9468  |
+| Precision       | 0.9762  |
+| Recall          | 0.9111  |
+| F1-Score        | 0.9425  |
+| Cohen's Kappa   | 0.8931  |
+| MCC             | 0.8950  |
+| Log Loss        | 0.2470  |
+
+
+## Classification report for oral cancer
+
+| **Category**   | **Precision** | **Recall** | **F1-Score** | **Support** |
+|---------------|--------------|-----------|-------------|------------|
+| Cancer        | 0.92         | 0.98      | 0.95        | 49         |
+| Non-Cancer    | 0.98         | 0.91      | 0.94        | 45         |
+
+### Classification report for dental conditions
 
 | Category              | Precision | Recall | F1-Score | Support |
 |-----------------------|-----------|--------|----------|---------|
