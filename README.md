@@ -134,7 +134,7 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 
 ![Example Image](backbone_diverse_ensemble_cm.png)
 ![Example Image](backbone_diverse_ensemble_cm_or.png)
-![Example Image](LC2.png)
+![Example Image](grad-cam_on_correctly_classified_samples_gradcam.png)
 
 ![Example Image](Precision-Recall.png)
 ![Example Image](Precision-Recall1.png)
