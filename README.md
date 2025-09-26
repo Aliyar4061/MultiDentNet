@@ -128,7 +128,7 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 ![Example Image](output11.png)
 
 ![Example Image](Misclassified.png)
-![Example Image](Confusion.png)
+![Example Image](test_metrics_comparison.png)
 ![Example Image](Confusion1.png)
 
 
