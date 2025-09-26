@@ -66,62 +66,89 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 
 
 
-## Summary of dental condition dataset
-
-| **Category**          | **Description** |
-|-----------------------|----------------|
-| Caries               | Images showing tooth decay, cavities, or carious lesions. |
-| Gingivitis           | Images displaying inflamed or infected gums. |
-| Tooth discoloration  | Images showcasing tooth discoloration or staining. |
-| Ulcers               | Images exhibiting oral ulcers or canker sores. |
-| Hypodontia           | Images representing the condition of missing one or more teeth. |
 
 
-![Example Image](Arch.png)
+| **Component**         | **Parameter**               | **Value**                   |
+| --------------------- | --------------------------- | --------------------------- |
+| **Training**          | Initial learning rate       | 5 × 10⁻⁴                    |
+|                       | Weight decay                | 1 × 10⁻⁴                    |
+|                       | Batch size                  | 32                          |
+|                       | Maximum epochs              | 50                          |
+|                       | Early stopping patience     | 5                           |
+| **Optimizer**         | AdamW β₁                    | 0.9                         |
+|                       | AdamW β₂                    | 0.999                       |
+|                       | Minimum learning rate       | 1 × 10⁻⁶                    |
+|                       | Cosine annealing T          | 50                          |
+| **Focal Loss**        | Alpha (α)                   | 0.25                        |
+|                       | Gamma (γ)                   | 2.0                         |
+|                       | Label smoothing (ε)         | 0.1                         |
+| **SE Block**          | Reduction ratio (r)         | 16                          |
+|                       | Activations                 | ReLU + Sigmoid              |
+| **Multi-Task**        | Hidden dimension            | 512                         |
+|                       | Dropout Rate                | 0.6                         |
+| **Data Augmentation** | Input resolution            | 128 × 128                   |
+|                       | Flip probability            | 0.5                         |
+|                       | Rotation limit              | ±20° (p=0.7)                |
+|                       | Color jitter parameters     | 0.1 (p=0.5)                 |
+|                       | Coarse dropout max holes    | 8 (p=0.5)                   |
+|                       | CLAHE clip limit            | 2.0 (p=0.3)                 |
+|                       | Elastic transform           | α=1, σ=50 (p=0.3)           |
+| **TTA**               | Number of augmentations (K) | 5                           |
+|                       | Transformations             | Flips (p=0.5), ±15° (p=0.5) |
+| **GCN**               | Number of classes (C)       | 5                           |
+|                       | Adjacency epsilon (ε)       | 1 × 10⁻⁹                    |
 
-### Evaluation Summary  of dental conditions
+| **Model**                         | **Weight** |
+| --------------------------------- | ---------- |
+| densenet121_no_gcn                | 0.2010     |
+| tf_efficientnetv2_s_no_mt         | 0.2003     |
+| resnet50_no_gcn                   | 0.2004     |
+| inception_v3_no_mt                | 0.1981     |
+| tf_efficientnetv2_s_learnable_adj | 0.2003     |
 
-| Metric          | Value   |
-|-----------------|---------|
-| Accuracy        | 0.9937  |
-| Precision       | 0.9937  |
-| Recall          | 0.9937  |
-| F1-Score        | 0.9936  |
-| Cohen's Kappa   | 0.9917  |
-| MCC             | 0.9917  |
-| Log Loss        | 0.0230  |
-
-
-
-## Evaluation summary of oral cancer
-
-| Metric          | Value   |
-|-----------------|---------|
-| Accuracy        | 0.9468  |
-| Precision       | 0.9762  |
-| Recall          | 0.9111  |
-| F1-Score        | 0.9425  |
-| Cohen's Kappa   | 0.8931  |
-| MCC             | 0.8950  |
-| Log Loss        | 0.2470  |
+| **Class**           | **FNR** |
+| ------------------- | ------- |
+| Caries              | 0.0000  |
+| Gingivitis          | 0.0000  |
+| Hypodontia          | 0.0857  |
+| Tooth Discoloration | 0.0000  |
+| Ulcers              | 0.0000  |
 
 
-## Classification report for oral cancer
+| **Class**           | **Precision** | **Recall** | **F1-Score** | **Support** |
+| ------------------- | ------------- | ---------- | ------------ | ----------- |
+| Caries              | 1.0000        | 1.0000     | 1.0000       | 239         |
+| Gingivitis          | 0.9873        | 1.0000     | 0.9936       | 234         |
+| Hypodontia          | 1.0000        | 0.9143     | 0.9552       | 35          |
+| Tooth Discoloration | 1.0000        | 1.0000     | 1.0000       | 184         |
+| Ulcers              | 1.0000        | 1.0000     | 1.0000       | 255         |
+| **Accuracy**        | –             | –          | 0.9968       | 947         |
+| **Macro Avg**       | 0.9975        | 0.9829     | 0.9898       | 947         |
+| **Weighted Avg**    | 0.9969        | 0.9968     | 0.9968       | 947         |
 
-| **Category**   | **Precision** | **Recall** | **F1-Score** | **Support** |
-|---------------|--------------|-----------|-------------|------------|
-| Cancer        | 0.92         | 0.98      | 0.95        | 49         |
-| Non-Cancer    | 0.98         | 0.91      | 0.94        | 45         |
+| **Model**                         | **Weight** |
+| --------------------------------- | ---------- |
+| densenet121_learnable_adj         | 0.2012     |
+| tf_efficientnetv2_s_no_se         | 0.2000     |
+| resnet50                          | 0.2000     |
+| inception_v3_learnable_adj        | 0.2012     |
+| tf_efficientnetv2_s_learnable_adj | 0.1976     |
 
-### Classification report for dental conditions
+| **Class**              | **FNR** |
+| ---------------------- | ------- |
+| Oral lesions benign    | 0.0057  |
+| Oral lesions malignant | 0.0240  |
 
-| Category              | Precision | Recall | F1-Score | Support |
-|-----------------------|-----------|--------|----------|---------|
-| Caries                | 1.00      | 1.00   | 1.00     | 239     |
-| Gingivitis            | 0.98      | 1.00   | 0.99     | 234     |
-| Hypodontia            | 0.97      | 0.91   | 0.94     | 35      |
-| Tooth Discoloration   | 1.00      | 0.99   | 0.99     | 184     |
-| Ulcers                | 1.00      | 1.00   | 1.00     | 255     |
+| **Class**              | **Precision** | **Recall** | **F1-Score** | **Support** |
+| ---------------------- | ------------- | ---------- | ------------ | ----------- |
+| Oral lesions benign    | 0.9774        | 0.9943     | 0.9858       | 174         |
+| Oral lesions malignant | 0.9939        | 0.9760     | 0.9849       | 167         |
+| **Accuracy**           | –             | –          | 0.9853       | 341         |
+| **Macro Avg**          | 0.9857        | 0.9852     | 0.9853       | 341         |
+| **Weighted Avg**       | 0.9855        | 0.9853     | 0.9853       | 341         |
+
+
+
 
 
 ![Example Image](dental3.png)
