@@ -132,8 +132,8 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 ![Example Image](test_metrics_comparison_oral_cancer.png)
 
 
-![Example Image](LC.png)
-![Example Image](LC1.png)
+![Example Image](backbone_diverse_ensemble_cm.png)
+![Example Image](backbone_diverse_ensemble_or_cm.png)
 ![Example Image](LC2.png)
 
 ![Example Image](Precision-Recall.png)
