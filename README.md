@@ -60,6 +60,10 @@ torch==2.1.0
 
 The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/datasets/salmansajid05/oral-diseases, https://www.kaggle.com/datasets/zaidpy/new-oral-cancer/data.
 
+
+
+![Example Image](Arc.jpg)
+
 ![Example Image](ps0.png)
 ![Example Image](ps1.png)
 
