@@ -174,8 +174,8 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 ![Example Image](Precision-Recall.png)
 ![Example Image](Precision-Recall1.png)
 
-![Example Image](ROC.png)
-![Example Image](ROC22.png)
+![Example Image](backbone_diverse_ensemble_roc.png)
+![Example Image](backbone_diverse_ensemble_roc_or.png)
 ![Example Image](tsne.png)
 ![Example Image](tsne1.png)
 
