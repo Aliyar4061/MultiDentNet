@@ -171,8 +171,8 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 ![Example Image](grad-cam_on_misclassified_samples_oral_cancer.png)
 
 
-![Example Image](Precision-Recall.png)
-![Example Image](Precision-Recall1.png)
+![Example Image](backbone_diverse_ensemble_prc.png)
+![Example Image](backbone_diverse_ensemble_prc_or.png)
 
 ![Example Image](backbone_diverse_ensemble_roc.png)
 ![Example Image](backbone_diverse_ensemble_roc_or.png)
