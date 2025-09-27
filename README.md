@@ -297,48 +297,49 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 
 # Conclusions
 
-In this work, we have presented MultiDentNet, a novel self-attention-enhanced DenseNet architecture designed for the simultaneous classification of five common dental conditions (caries, gingivitis, tooth discoloration, ulcers, and Hypodontia) as well as oral cancer from intraoral images. Our key findings include:
+MultiDentNet is not intended as a standalone diagnostic system, but as a decision-support tool for tele-dentistry, primary care, and resource-limited settings. Successful deployment requires: (i) integration with digital intraoral cameras or smartphone imaging systems, (ii) connectivity to cloud-based EHR platforms for specialist referral, and (iii) prospective validation in real-world clinical workflows. While current results demonstrate technical feasibility and translational promise, clinical adoption will require larger, multi-center datasets with histopathological confirmation and developmental metadata to ensure safety, generalizability, and regulatory compliance.
 
-## Key Findings
+In this work, we introduced MultiDentNet, a novel, backbone-diverse ensemble framework enhanced with squeeze-and-excitation (SE) attention, graph convolutional networks (GCNs) with learnable adjacency matrices, and multi-task learning. It enables simultaneous classification of five common dental conditions (caries, gingivitis, tooth discoloration, ulcers, hypodontia) and oral cancer from intraoral images. Our comprehensive evaluation demonstrates state-of-the-art performance across multiple dimensions:
 
-- **High diagnostic performance:** On a held-out test set of 947 images for dental conditions, our model achieved 99.37% overall accuracy, 99.37% precision and recall, a macro-F1 score of 0.98, and a macro-AUC of 1.00. For oral cancer, the model achieved 94.68% accuracy, 97.62% precision, 91.11% recall, and an F1-score of 0.94 on a dataset of 131 images. These results demonstrate robust classification even for underrepresented classes, such as Hypodontia (F1 = 0.94) and oral cancer (F1 = 0.95 for Cancer class).
+- **Exceptional diagnostic accuracy:** On a held-out test set of 947 dental images, the backbone-diverse ensemble achieved 99.68% accuracy, with precision (99.69%), recall (99.68%), and F1-score (99.68%) all exceeding 99.6%. Cohen's κ (0.99) and MCC (0.99) indicate near-perfect agreement, consistent with only three misclassifications on this test set. For oral cancer (94 images in the test set), the ensemble reached 98.53% accuracy, with balanced performance across classes (F1: 0.98 for malignant, 0.99 for benign). These results surpass the strongest single backbone: +0.21% over ResNet50 for dental conditions and +2.05% over Inception-V3 for oral cancer.
 
-- **Effective imbalance handling:** By integrating Focal Loss and a domain-specific augmentation pipeline (including CLAHE, elastic deformations, and anisotropic rotations), we substantially mitigated the effects of severe class skew, ensuring strong performance across all conditions.
+- **Architectural contribution:** Ablation studies quantify the impact of each component. Squeeze-and-Excitation (SE) blocks maintained or slightly improved performance across most backbones. Graph Convolutional Networks (GCNs) with learnable adjacency matrices enhanced accuracy in several architectures, with gains up to 0.8%, particularly by modeling inter-class relationships. Multi-task learning (MTL) contributed gains of up to 0.7%. Notably, Inception-V3 exhibited high sensitivity to graph structure design: when equipped with a fixed adjacency matrix, its validation accuracy dropped to 75.84%, compared to 96.59% for the base model (without GCN) and 99.12% when augmented with a learnable adjacency matrix, underscoring the importance of adaptive relational modeling.
 
-- **Enhanced interpretability:** Qualitative analyses such as t-SNE feature clustering, one-vs-rest ROC/PR curves, and confusion-matrix visualizations confirmed clear class separability and provided valuable insights into residual error modes, fostering transparency and clinician trust.
+- **Class-specific robustness:** Near-perfect performance (precision, recall, and F1 ≥ 0.99) was observed for caries, tooth discoloration, and ulcers. For hypodontia (35 test samples), precision was 1.00, recall 0.91, and F1 0.96, reflecting the challenge posed by this rare class. For oral cancer, the false-negative rate was clinically acceptable at 2.4% for malignant and 0.6% for benign cases.
 
-These results directly address our original objective of developing a unified, scalable diagnostic tool for comprehensive oral health assessment. By combining hierarchical self-attention with DenseNet's feature reuse, our framework effectively captures both fine-grained lesion details and global contextual cues, addressing limitations in prior studies that focused on single or dual conditions.
+- **Effective imbalance mitigation:** Focal Loss (α=0.25, γ=2.0), label smoothing (ε=0.1), and strong augmentation (CLAHE, elastic deformations, and test-time augmentation) effectively alleviated class imbalance, particularly for rare conditions like hypodontia.
 
-## Implications
+- **Enhanced interpretability:** t-SNE clustering, ROC/PR curves, confusion matrices, and Grad-CAM visualizations confirm that predictions are based on clinically relevant features, fostering transparency and clinician trust.
 
-Our approach offers several practical benefits for clinical practice:
+These findings fulfill our objective: to develop a unified, high-performance diagnostic tool for comprehensive oral health assessment. By combining diverse pre-trained backbones (DenseNet121, EfficientNetV2-S, ResNet50, Inception-V3) with attention mechanisms and inter-class modeling, MultiDentNet captures both fine-grained lesion details and global contextual cues.
 
-- *Clinical decision support:* The high accuracy, confidence, and interpretability of MultiDentNet make it a promising candidate for real-time augmentation of dentist evaluations, potentially reducing diagnostic errors and enhancing patient outcomes.
-
-- *Workflow efficiency:* An end-to-end system that concurrently screens for multiple dental conditions and oral cancer can streamline clinical workflows, reduce patient chair time, and minimize variability across clinicians.
-
-- *Foundation for multimodal extension:* The self-attention modules and training strategies we propose can be readily adapted to incorporate additional imaging modalities, such as radiographs or 3D scans, further enhancing diagnostic capabilities.
+MultiDentNet provides a deployable, lightweight AI framework designed to support comprehensive screening for dental pathologies and oral cancer, particularly valuable in underserved or low-resource environments. Its architecture is optimized for real-world clinical integration, including: (i) frontline triage in rural or infrastructure-limited regions, (ii) augmentation of non-specialist providers (e.g., GPs and hygienists) during initial patient evaluations, (iii) streamlining high-throughput clinic operations through automated pre-screening, and (iv) compatibility with telehealth and mobile health ecosystems. Engineered for efficiency, the model runs in real time on handheld devices and interfaces smoothly with cloud-hosted EHR platforms, enabling immediate clinical decision support and seamless longitudinal care coordination.
 
 ## Limitations
 
-While MultiDentNet demonstrates exceptional performance on the current datasets, several limitations warrant consideration:
+Several constraints warrant acknowledgment:
 
-- **Dataset diversity:** The dental condition images were sourced from a limited number of clinical centers, and the oral cancer dataset is relatively small (131 images). External validation on more diverse populations, imaging devices, and larger datasets is needed to confirm generalizability.
+- **Dataset diversity:** The data may not fully capture global demographic variation or imaging device heterogeneity, underscoring the need for multi-institutional and multi-ethnic validation.
 
-- **Two-dimensional images:** Intraoral photographs may not capture sub-surface pathology visible in radiographs. Future work should explore multimodal fusion to integrate radiographic data for a more comprehensive diagnostic tool.
+- **Modalities:** Reliance on 2D intraoral RGB photographs limits detection of sub-surface pathologies (e.g., interproximal caries, periapical lesions) that require radiographic imaging for definitive diagnosis.
 
-- **Threshold optimization:** Although AUC values indicate excellent ranking capability, optimal decision thresholds for each class remain to be calibrated for specific clinical settings to maximize clinical utility.
+- **Hypodontia assessment:** The small sample size and annotations based solely on visible tooth absence, without age stratification or radiographic confirmation, may bias results. In pediatric cases, unerupted teeth risk being misclassified as missing; thus, findings should be interpreted cautiously in developmental contexts.
+
+- **Decision thresholds:** Classification thresholds are not universally optimal and require context-specific calibration to balance false-positive and false-negative risks depending on clinical priorities (e.g., screening vs. confirmatory use).
+
+- **Oral cancer dataset:** Results are strictly proof-of-concept due to the limited dataset size (n=940), narrow anatomical scope (lips and tongue only), and binary labeling without histopathological confirmation or dysplasia–carcinoma distinction. Accordingly, the current study demonstrates technical feasibility rather than clinical validation.
 
 ## Future Work
 
-Building on these findings, we plan to:
+We plan to:
 
-- Validate MultiDentNet on multi-institutional and mobile-device-captured image datasets to assess its robustness in tele-dentistry contexts and ensure applicability across diverse populations.
-
-- Integrate radiographic inputs (e.g., bitewing X-rays, CBCT) via a multimodal architecture to improve the detection of sub-surface lesions and enhance diagnostic accuracy.
-
-- Investigate active-learning strategies to reduce annotation burden and continually adapt the model to evolving clinical practices, ensuring long-term relevance and performance.
+- Validate model performance across multi-center and mobile-captured datasets to ensure robustness in real-world tele-dentistry settings.
+- Integrate radiographic modalities (e.g., bitewing radiographs and cone-beam computed tomography) into a multimodal diagnostic framework to enhance detection of sub-surface pathologies.
+- Implement active and federated learning strategies to reduce annotation burden while enabling privacy-preserving, distributed model training across institutions.
+- Develop EHR-integrated clinical interfaces that provide seamless, real-time decision support within existing clinical workflows.
+- Expand the oral cancer dataset with histopathologically confirmed cases and anatomically and diagnostically granular labels (e.g., distinguishing dysplasia from invasive carcinoma).
+- Refine hypodontia assessment through age-stratified cohorts and radiographic confirmation to enable reliable application in pediatric populations.
 
 ## Summary
 
-MultiDentNet provides a comprehensive, interpretable, and high-performance solution for multi-condition dental and oral cancer diagnostics. By addressing the limitations of prior research and offering a scalable framework for clinical deployment, we believe this work will catalyze further advancements in AI-driven oral healthcare and accelerate the adoption of intelligent diagnostic tools in everyday practice.
+In summary, MultiDentNet delivers a comprehensive, interpretable, and high-performance framework for multi-condition dental screening and proof-of-concept oral cancer detection. By addressing key limitations of prior approaches and providing a scalable pathway toward clinical integration, particularly in resource-constrained settings, it represents a meaningful step toward equitable, AI-assisted oral healthcare. The model holds potential to improve accessibility, consistency, and early detection rates globally, while emphasizing the need for prospective validation and multimodal enhancement before widespread clinical adoption.
