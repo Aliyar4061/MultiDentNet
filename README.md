@@ -292,8 +292,8 @@ The datasets can be downloaded from this Kaggle address: https://www.kaggle.com/
 
 ![Example Image](backbone_diverse_ensemble_roc.png)
 ![Example Image](backbone_diverse_ensemble_roc_or.png)
-![Example Image](tsne.png)
-![Example Image](tsne1.png)
+![Example Image](tsne_visualization.png)
+![Example Image](tsne_visualization_oral_cancer.png)
 
 # Conclusions
 
