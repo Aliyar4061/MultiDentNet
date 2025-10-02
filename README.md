@@ -1,20 +1,20 @@
-# MultiDentNet: A Unified Deep Learning Framework for Automated Screening of Dental Conditions and Proof-of-Concept Oral Cancer Detection
+# MultiDentNet: A Unified Deep Learning Framework for Multi-Condition Dental Screening and Preliminary Oral Lesion Triage
 
 ## Overview
 
 # Objectives: 
-This study introduces MultiDentNet, a unified deep learning framework for automated screening of multiple dental conditions and oral cancer. The framework addresses limitations of manual examinations and single-condition models by leveraging architectural diversity and inter-class dependency modeling to improve diagnostic accuracy and generalizability.
+This study introduces MultiDentNet, a unified deep learning framework for automated screening of multiple dental conditions and binary classification of clinically labeled oral cancer versus non-cancer lesions. It addresses the limitations of manual examination and single-condition models by leveraging architectural diversity and inter-class dependency modeling.
 # Materials and Methods:
-MultiDentNet integrates four pre-trained convolutional neural networks (DenseNet121, EfficientNetV2-S, ResNet50, Inception-V3), enhanced with squeeze-and-excitation (SE) blocks, graph convolutional networks (GCNs) with learnable adjacency matrices, and a multi-task learning strategy. Predictions are combined via a weighted ensemble optimized on validation performance. The framework was evaluated on a dental dataset (9,439 images across five conditions) and a separate oral cancer subset (940 images). Given its limited size, single-center origin, and absence of histopathological confirmation, the oral cancer analysis is presented strictly as a proof-of-concept. Performance was assessed using accuracy, Cohen’s $\kappa$, false-negative rate (FNR), interpretability (Grad-CAM, t-SNE), and ablation studies.
+MultiDentNet integrates four pre-trained CNN backbones (DenseNet121, EfficientNetV2-S, ResNet50, Inception-V3), combined with squeeze-and-excitation blocks, graph convolutional networks (GCNs) with learnable adjacency, and a multi-task learning strategy. Predictions are fused through a weighted ensemble optimized on validation data. Evaluation used 9,439 dental images across five conditions and a 940-image oral lesion subset (proof-of-concept, clinically labeled as cancer or non-cancer by specialists without universal histopathological confirmation). Metrics included accuracy, Cohen’s $\kappa$, false-negative rate (FNR), interpretability (Grad-CAM, t-SNE), and ablation analysis.
 
 # Results:
-MultiDentNet achieved 99.68\% accuracy for dental conditions and 98.53\% for oral cancer, outperforming individual backbones and prior benchmarks. Inter-rater agreement was near-perfect (Cohen’s $\kappa$ = 1.00 for dental conditions, 0.97 for oral cancer), with a malignant lesion FNR of 2.4\%. Ablation studies confirmed the benefit of SE blocks, GCNs, and multi-task learning. Visualizations highlighted clinically relevant regions, while rare classes such as hypodontia remained more challenging (FNR: 8.57\%). Oral cancer results, though promising, are clearly not yet clinically generalizable.
+MultiDentNet achieved 99.68\% accuracy for dental conditions and 98.53\% for oral cancer classification, surpassing baselines. Agreement was near-perfect ($\kappa = 1.00$ and $0.97$), with malignant lesion FNR at 2.4\%. Hypodontia remained challenging (FNR: 8.57\%). Visual analyses confirmed clinically relevant regions.
 
 # Conclusions:
-By combining diverse CNN architectures with adaptive dependency modeling, MultiDentNet delivers accurate and interpretable multi-condition screening for dental pathologies. It reduces diagnostic errors, supports early detection, and accelerates workflows in simulated clinical settings. Future work should emphasize external validation using multi-center, histopathologically confirmed datasets and multimodal integration (e.g., radiographic and clinical data). The code and supplementary results are available at \url{https://github.com/Aliyar4061/MultiDentNet}.
+MultiDentNet offers accurate, interpretable multi-condition screening. Oral cancer results are proof-of-concept and require validation on multi-center, histopathologically confirmed datasets. Code and supplementary results: \url{https://github.com/Aliyar4061/MultiDentNet}.
 
 # Clinical Relevance:
-MultiDentNet demonstrates potential as a scalable AI-assisted screening tool for dental and oral lesion assessment. Its applications include (i) triage in rural or underserved areas, (ii) supporting general practitioners and hygienists in preliminary evaluations, (iii) streamlining high-volume clinic workflows, and (iv) integration into tele-dentistry and mobile health platforms. The lightweight design enables real-time inference on mobile devices and seamless interfacing with cloud-based electronic health record systems, enhancing continuity of care.
+MultiDentNet supports triage in underserved areas, preliminary assessments, high-volume workflows, and tele-dentistry. Its lightweight design enables mobile deployment and cloud-based EHR integration.
 
 
 
